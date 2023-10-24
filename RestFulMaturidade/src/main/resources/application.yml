@@ -1,1 +1,17 @@
+spring:
+  h2:
+    console:
+      enabled: true  # Ativa o console H2 para visualizar o banco de dados via web
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:testdb  # URL de conexão para um banco de dados H2 em memória
+    username: sa
+    password:
+  hibernate:
+    ddl-auto: update  # Modo de atualização automática das tabelas (outros valores possíveis: create, create-drop, validate, none)
+  jpa:
+    hibernate:
+      show-sql: true  # Exibe as instruções SQL no console
 
+server:
+  port: 8080  # Porta em que o aplicativo Spring Boot será executado
