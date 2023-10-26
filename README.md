@@ -6,22 +6,18 @@
 
 <section>
   <div>
-  <h2>API REST Maturidade 0</h2>
-  <p>Na API com nível mais baixo de maturidade encontramos apenas um verbo a ser utilizado como tipo de operação, o POST. Todas as URLs criadas sendo elas para ações de obter dados, atualizar dados, inserir e deletar são chamadas usando o POST.</p>
-
-  <p>Olá, no nivel de maturidade 0 é utilizado apenas o verbo POST, então irei exemplificar com a soma de dois valores, use uma ferramenta para utilizar a requisição do tipo Post (<a href="https://www.postman.com">Por exemplo: Postman</a>) com o pathVariable <i>http://localhost:8080/Math/sum/5/8</i> lembrando que os valores podem ser trocados</p>
-
-  <section>
-  <h4>Explicação da construção da URL:</h4>
+  <h2>API REST Maturidade 1</h2>
+  <p>Nesse nível de maturidade as APIs se tornam mais organizadas. Uma URL é criada para cada recurso que será consumido. por exemplo:</p>
       <ul>
-        <li><strong>http:</strong> Protocolo que permite a obtenção de recursos, como HTML.</li>
-        <li><strong>localhost:8080:</strong> A porta onde nossa aplicação Java Spring está rodando.</li>
-        <li><strong>/Math:</strong> O RequestMapping para a calculadora, onde encontramos as instruções.</li>
-        <li><strong>/sum/{numA}/{numB}:</strong> O PostMapping que realiza a soma de dois valores, {numA} e {numB}. Anteriormente informei os valores 5 e 8 como podem observar.</li>
+        <li><strong>http://localhost:8080/Math/sum/{numA}/{numB}</strong>Para realizar a operação desomas.</li>
+        <li><strong>http://localhost:8080/Math/sub/{numA}/{numB}</strong>Para realizar a operação desubtração.</li>
+        <li><strong>http://localhost:8080/Math/mult/{numA}/{numB}</strong>Para realizar a operação de multicação.</li>
+        <li><strong>http://localhost:8080/Math/div/{numA}/{numB}</strong>Para realizar a operação de divisão.</li>
+        <li><strong>http://localhost:8080/Math/raiz/{numA}</strong>Para realizar a operação de raiz quadrada.</li>
       </ul>
-  </section>
-  </div>
-</section>
+
+  ##
+  <p>Então, em vez de fazer todos os nossos pedidos a um simples endpoint, nós começamos a falar com recursos individuais. Com isso temos recursos para cada operação matematica. Mas ainda utlizando apenas o verbo POST.</p>
 
 ##
 <footer>
