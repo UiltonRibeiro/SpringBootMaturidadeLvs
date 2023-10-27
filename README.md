@@ -83,7 +83,7 @@
   </ul>
 
   ##
-Manutenibilidade  <p>Então continuamos deixando a aplicação mais organizada e semantica, tornando as operações mais segura e com maior manutenibilidade. Existem outros dois métodos que são o <strong>HEAD</strong> e o <strong>OPTIONS</strong> que são mais utilizados por nós desenvolvedor e não tanto por cliente por isso acabei não dando tanta atenção, mas vale a pesquisa sobre eles.</p>
+ <p>Então continuamos deixando a aplicação mais organizada e semantica, tornando as operações mais segura e com maior manutenibilidade. Existem outros dois métodos que são o <strong>HEAD</strong> e o <strong>OPTIONS</strong> que são mais utilizados por nós desenvolvedor e não tanto por cliente por isso acabei não dando tanta atenção, mas vale a pesquisa sobre eles.</p>
 
 ##
 <footer>
