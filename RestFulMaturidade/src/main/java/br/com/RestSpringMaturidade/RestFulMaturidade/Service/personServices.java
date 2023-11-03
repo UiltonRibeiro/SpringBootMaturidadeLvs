@@ -1,13 +1,16 @@
 package br.com.RestSpringMaturidade.RestFulMaturidade.Service;
 
+import br.com.RestSpringMaturidade.RestFulMaturidade.Controller.PersonController;
 import br.com.RestSpringMaturidade.RestFulMaturidade.Controller.Repository.PersonRepository;
+import br.com.RestSpringMaturidade.RestFulMaturidade.Entities.DTO.DTOPerson;
+import br.com.RestSpringMaturidade.RestFulMaturidade.Entities.Mapper.MapperModel;
 import br.com.RestSpringMaturidade.RestFulMaturidade.Entities.Person;
 import br.com.RestSpringMaturidade.RestFulMaturidade.Exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
@@ -17,29 +20,37 @@ public class personServices {
     @Autowired
     PersonRepository personRepository;
 
-    public Person findById(String id){
+    public DTOPerson findById(Long id){
         logger.info("Find one Person ");
-        return personRepository.findById(Long.parseLong(id))
-                .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
+        DTOPerson dtoPerson = MapperModel.parseObjetc(personRepository.findById(id).orElseThrow(
+                        () -> new ResourceNotFoundException("No records found for this ID!")
+                ), DTOPerson.class
+        );
+        return dtoPerson.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(PersonController.class).findById(id)).withSelfRel());
     }
 
-    public List<Person> FindAll(){
-        return personRepository.findAll();
+    public List<DTOPerson> FindAll(){
+        List<DTOPerson> dtos = MapperModel.parseListObjects(personRepository.findAll(), DTOPerson.class);
+        dtos.stream().forEach(p -> p.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(PersonController.class).findById(p.getKey())).withSelfRel()));
+        return dtos;
     }
 
-    public Person CreatePerson(Person person){
+    public DTOPerson CreatePerson(DTOPerson DTOperson){
         logger.info("Created one Person");
-        return personRepository.save(person);
+        Person personEntity = MapperModel.parseObjetc(DTOperson, Person.class);
+        DTOPerson DTOEntity = MapperModel.parseObjetc(personRepository.save(personEntity),DTOPerson.class);
+        return DTOEntity.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(PersonController.class).findById(DTOEntity.getKey())).withSelfRel());
     }
 
-    public Person Update(Person person){
-        Person entity = personRepository.findById(person.getId())
+    public DTOPerson Update(DTOPerson dtoPerson){
+        Person entity = personRepository.findById(dtoPerson.getKey())
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
-        entity.setFistName(person.getFistName());
-        entity.setAddress(person.getAddress());
-        entity.setGender(person.getGender());
+        entity.setFistName(dtoPerson.getFistName());
+        entity.setAddress(dtoPerson.getAddress());
+        entity.setGender(dtoPerson.getGender());
         logger.info("An updated Person");
-        return personRepository.save(entity);
+        DTOPerson UpdatedPerson =  MapperModel.parseObjetc(personRepository.save(entity), DTOPerson.class);
+        return UpdatedPerson.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(PersonController.class).findById(UpdatedPerson.getKey())).withSelfRel());
     }
 
     public void DeletePerson(Long id){
