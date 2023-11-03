@@ -52,19 +52,9 @@
     <li><strong>YamlJacksonMessageConvert:</strong> responsável pelo serialização do YAML</li>
     <li><strong>MediaType:</strong> Que está resposável por manter e fornecer os formatos de maneira statica. </li>
   </ul>
-<<<<<<< HEAD
-  <p></p>
   
 </section>
     
-  
-=======
-
-  ##
-  <p>Então continuamos deixando a aplicação mais organizada e semantica, tornando as operações mais segura e com maior manutenibilidade. Existem outros dois métodos que são o <strong>HEAD</strong> e o <strong>OPTIONS</strong> que são mais utilizados por nós desenvolvedor e não tanto por cliente por isso acabei não dando tanta atenção, mas vale a pesquisa sobre eles.</p>
-
-##
->>>>>>> de8c707f5087164eee678cb855a5902ff0af883b
 <footer>
   <h3>Agradecimento:</h3>
   <p> Quero expressar minha sincera gratidão por explorar os níveis de maturidade no desenvolvimento de aplicativos Spring Boot comigo. Espero que esta jornada tenha sido informativa e inspiradora. Se você tiver mais perguntas ou precisar de assistência adicional, não hesite em entrar em contato. Estou aqui para apoiar seu desenvolvimento contínuo. Obrigado!</p>
