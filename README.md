@@ -26,5 +26,5 @@
 ##
 <footer>
   <h3>Agradecimento:</h3>
-  <p> Agradeço por explorar os níveis de maturidade no desenvolvimento de aplicativos Spring Boot comigo.</p>
+  <p> Quero expressar minha sincera gratidão por explorar os níveis de maturidade no desenvolvimento de aplicativos Spring Boot comigo. Espero que esta jornada tenha sido informativa e inspiradora. Se você tiver mais perguntas ou precisar de assistência adicional, não hesite em entrar em contato. Estou aqui para apoiar seu desenvolvimento contínuo. Obrigado!.</p>
 </footer>
